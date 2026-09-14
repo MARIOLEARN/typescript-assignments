@@ -13,3 +13,24 @@
  * - Discount amount
  * - Final payment
  */
+
+const hours = 7;
+const minutes = 35;
+const ratePerHour = 8000;
+const totalPlayingMinutes = (hours * 60) + minutes;
+
+let remainingMinutes = totalPlayingMinutes % 60;
+let billedHours = Math.ceil(totalPlayingMinutes / 60);
+let totalPaymentBeforeDiscount = billedHours * ratePerHour;
+let disCount = billedHours > 5 ? totalPaymentBeforeDiscount * 0.15 : 0;
+let finalpayment = totalPaymentBeforeDiscount - discount;
+
+
+
+
+console.log("Total Playing Time (minutes):", totalPlayingMinutes);
+console.log("Remaining Minutes:", remainingMinutes);
+console.log("Total Billed Hours:", billedHours);
+console.log("Total Payment Before Discount:", totalPaymentBeforeDiscount);
+console.log("Discount Amount:", discount);
+console.log("Final Payment:", finalPayment);

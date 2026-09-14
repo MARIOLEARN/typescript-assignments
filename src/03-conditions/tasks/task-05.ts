@@ -32,3 +32,25 @@
  *  - Implement the second screening only if the first screening is passed.
  *  - Display the correct result.
  */
+const sTudentName: string = "Zidan Almer";
+const GPA: number = 3.97;
+const fAmilyIncome: number = 3500000;
+const cOmpetitionCount: number = 5;
+const disciplinaryViolation: boolean = false;
+const dOcumentsComplete: boolean = true;
+const passedSecondScreening: boolean = (cOmpetitionCount >=3 && !disciplinaryViolation && dOcumentsComplete)
+
+let Resultnya: string;
+
+
+if (GPA >=3.75 && fAmilyIncome <5000000) {
+     Resultnya = `${sTudentName}, you have passed the first screening`;
+ if (passedSecondScreening) {
+    Resultnya = `${sTudentName}, scholarship Approved`;
+} else {
+    Resultnya = `${sTudentName}, you Passed first screening but failed second screening`;
+}  } else {
+    Resultnya = `${sTudentName}, you failed first screening`;
+}
+
+console.log(Resultnya);

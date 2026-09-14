@@ -34,3 +34,37 @@
  * - Free shipping eligibility
 
  */
+
+const keyboardPrice = 850000;
+const keyboardQty = 1;
+const mousePrice = 275000;
+const mouseQty = 2;
+const monitorStandPrice = 420000;
+const monitorStandQty = 1;
+const voucherValue = 100000;
+const isPremiumMember = true;
+const vatRate = 0.11;
+const pointRate = 50000;
+const subtotal =
+  keyboardPrice * keyboardQty +
+  mousePrice * mouseQty +
+  monitorStandPrice * monitorStandQty;
+const membershipDiscount = isPremiumMember ? subtotal * 0.1 : 0;
+const afterMembershipDiscount = subtotal - membershipDiscount;
+const afterVoucher = afterMembershipDiscount - voucherValue;
+const paymentBeforeTax = afterVoucher;
+const vat = paymentBeforeTax * vatRate;
+const finalPayment = paymentBeforeTax + vat;
+const rewardPoints = Math.floor(paymentBeforeTax / pointRate);
+const isFreeShippingEligible = isPremiumMember || paymentBeforeTax > 1500000;
+
+
+
+console.log("Product Subtotal:", subtotal);
+console.log("Membership Discount:", membershipDiscount);
+console.log("Voucher Deduction:", voucherValue);
+console.log("Payment Before Tax:", paymentBeforeTax);
+console.log("VAT:", vat);
+console.log("Final Payment:", finalPayment);
+console.log("Reward Points:", rewardPoints);
+console.log("Free Shipping Eligibility:", isFreeShippingEligible);

@@ -30,3 +30,25 @@
  * 2. Implement both screening stages.
  * 3. Display the loan decision.
  */
+
+const applicant: string = "Sugeng raharjo";
+const monthlyIncome: number = 12000000;
+const CreditScore: number = 800;
+const debt: number = 3500000;
+const permanentEmployee: boolean = true;
+
+
+let rEsult: string;
+
+if (monthlyIncome >=8000000 && CreditScore >= 700) {
+    rEsult = `${applicant}, you have passed the first screening, mantab`;
+    if (debt <=monthlyIncome * 0.3 && permanentEmployee) {
+        rEsult = `${applicant}, your loan is approved sipp`;
+    } else {
+         rEsult = `${applicant}, you only passed the first screening, so you get Manual Review yea`;
+    }
+} else {
+    rEsult = `yaaah ${applicant}, you failed the first screening`;
+}
+
+console.log(rEsult);

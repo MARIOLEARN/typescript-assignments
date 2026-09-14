@@ -33,3 +33,35 @@
  * - Calculate the remaining scholarship budget.
  * - Display whether the student is accepted.
  */
+
+const StudentName = "Alya Putri";
+const gpa = 3.89;
+const familyIncome = 4200000;
+const competitionCount = 4;
+const hasDisciplinaryRecord = false;
+const documentsComplete = true;
+const totalScholarshipBudget = 500000000;
+
+let gpaRequirement = gpa >= 3.75;
+let incomeRequirement = familyIncome < 5000000;
+let competitionRequirement = competitionCount >= 3;
+let disciplinaryRequirement = hasDisciplinaryRecord === false;
+let documentRequirement = documentsComplete === true;
+let isAccepted =
+    gpaRequirement &&
+    incomeRequirement &&
+    competitionRequirement &&
+    disciplinaryRequirement &&
+    documentRequirement;
+let scholarshipAmount = isAccepted ? 12000000 : 0;
+let remainingBudget = totalScholarshipBudget - scholarshipAmount;
+
+console.log("Student Name:", StudentName);
+console.log("GPA Requirement:", gpaRequirement);
+console.log("Income Requirement:", incomeRequirement);
+console.log("Competition Requirement:", competitionRequirement);
+console.log("No Disciplinary Record:", disciplinaryRequirement);
+console.log("Documents Complete:", documentRequirement);
+console.log("Accepted:", isAccepted);
+console.log("Scholarship Amount:", scholarshipAmount);
+console.log("Remaining Scholarship Budget:", remainingBudget);

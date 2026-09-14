@@ -14,3 +14,21 @@
  *  - Final payment
  * 2. Display the calculation results.
  */
+
+const hargaNasiGoreng = 18000;
+const jumlahNasiGoreng = 3;
+const hargaAirMineral = 5000;
+const jumlahAirMineral = 2;
+const diskon = 10000;
+
+let totalMakanan = hargaNasiGoreng * jumlahNasiGoreng;
+let totalMinuman = hargaAirMineral * jumlahAirMineral;
+let grandTotal = totalMakanan + totalMinuman;
+let pembayaranAkhir = grandTotal - diskon;
+
+console.log("STRUK PEMBELIAN");
+console.log("Total harga makanan :", totalMakanan);
+console.log("Total harga minuman :", totalMinuman);
+console.log("Total sebelum diskon :", grandTotal);
+console.log("Diskon :", diskon);
+console.log("Total yang harus dibayar :", pembayaranAkhir);
