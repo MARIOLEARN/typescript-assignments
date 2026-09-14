@@ -60,7 +60,6 @@ if (!poweredOn) {
         } else {
             console.log("machine operating normally")
         }
-        
     }
  }
 }
