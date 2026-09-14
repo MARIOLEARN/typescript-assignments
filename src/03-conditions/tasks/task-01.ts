@@ -31,3 +31,5 @@ if (FinalScore >=75 && Attendance >=90 && TuitionPaid == true) {
 } else {
     console.log ("Not Eligible")
 }
+
+/* Comment Test*/
