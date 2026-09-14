@@ -46,4 +46,21 @@ let resUlt: string;
 
 if (!poweredOn) {
     console.log("machine offline")
+} else {
+    if (temperature >90) {
+        if (!highVibration) {
+            console.log("emergency shutdown")
+        } else {
+            console.log("cooling required")
+        }
+    } else {
+        if (temperature <=90) {
+        if (productionSpeed <80) {
+            console.log("performance warning")
+        } else {
+            console.log("machine operating normally")
+        }
+        
+    }
+ }
 }
