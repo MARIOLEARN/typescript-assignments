@@ -26,3 +26,38 @@ const students = [
     { name: "Gita", score: 92 },
     { name: "Hana", score: 67 }
 ];
+let A: number = 0;
+let B: number = 0;
+let C: number = 0;
+let D: number = 0;
+let highestScore: number = students[0].score;
+let lowestScore: number = students[0].score;
+let totalScore: number = 0;
+for (let i=0; i<8; i++) {
+  totalScore += students[i].score;
+  if (students[i].score >= 90) {
+    A++;
+  } else if (students[i].score >= 80){
+    B++;
+  } else if (students[i].score >= 70){
+    C++;
+  } else {
+    D++;
+  }
+  if (students[i].score > highestScore){
+    highestScore = students[i].score;
+  }
+  if (students[i].score < lowestScore){
+    lowestScore = students[i].score;
+  }
+}
+
+
+const averagescore= totalScore/8;
+console.log(`A students: ${A}`);
+console.log(`B students: ${B}`);
+console.log(`C students: ${C}`);
+console.log(`D students: ${D}`);
+console.log(`highest score: ${highestScore}`);
+console.log(`lowest score: ${lowestScore}`);
+console.log(`average score: ${averagescore.toFixed(2)}`);
