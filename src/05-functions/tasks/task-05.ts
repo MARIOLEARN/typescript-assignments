@@ -16,7 +16,7 @@
  * 4. Create function to return number of passing students.
  */
 
-const scores = [
+const scores: number[] = [
   82,
   91,
   76,
@@ -30,17 +30,44 @@ const scores = [
 ];
 
 function findHighestScore(scores: number[]): number {
-
+let highest = scores[0];
+for (const score of scores) {
+    if (score > highest) {
+        highest = score;
+    }
+}
+return highest;
 }
 
 function findLowestScore(scores: number[]): number {
-
+let lowest = scores[0];
+for (const score of scores) {
+    if (score < lowest) {
+        lowest = score;
+    }
+}
+return lowest;
 }
 
 function calculateAverage(scores: number[]): number {
-    
+    let sum = 0;
+    for (const score of scores) {
+        sum += score;
+    }
+    return sum / scores.length;
 }
 
 function countPassedStudents(scores: number[]): number {
-
+    let count = 0;
+    for (const score of scores) {
+        if (score >= 75) {
+            count++;
+        }
+    }
+    return count;
 }
+
+console.log(`Highest Score: ${findHighestScore(scores)}`);
+console.log(`Lowest Score: ${findLowestScore(scores)}`);
+console.log(`Average Score: ${calculateAverage(scores)}`);
+console.log(`Number of Passed Students: ${countPassedStudents(scores)}`);

@@ -11,10 +11,24 @@
  * 5. Display the returned value.
  */
 
-const prices = [
+type PriceNya = number[];
+
+const prices: PriceNya = [
     250000,
     180000,
     95000,
     420000,
     125000
 ];
+
+
+function calculateTotalPrice(prices: PriceNya): number {
+    let total = 0;
+    for (const price of prices) {
+        total += price;
+    }
+    return total;
+}
+
+const totalPrice = calculateTotalPrice(prices);
+console.log(`Total Purchase Amount: ${totalPrice}`);

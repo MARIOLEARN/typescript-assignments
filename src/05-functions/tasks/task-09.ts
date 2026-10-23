@@ -21,7 +21,7 @@
  * - printHospitalReport() must only display results.
  * - No duplicated calculations.
  */
-const patients = [
+const patients: Patient[] = [
     {
         id: "PT001",
         name: "Alya",
@@ -63,3 +63,103 @@ const patients = [
         bill: 350000
     }
 ];
+
+
+
+type Patient = {
+    id: string;
+    name: string;
+    age: number;
+    department: string;
+    admitted: boolean;
+    bill: number;
+}
+ 
+type HospitalReport = {
+    totalPatients: number;
+    admittedCount: number;
+    dischargedCount: number;
+    byDepartment: Record<string, number>;
+    highestBill: number;
+    lowestBill: number;
+    averageBill: number;
+    totalRevenue: number;
+    admittedNames: string[];
+}
+ 
+ 
+function countTotalPatients(patients: Patient[]): number {
+    return patients.length;
+}
+ 
+function getAdmittedPatients(patients: Patient[]): Patient[] {
+    return patients.filter(p => p.admitted);
+}
+ 
+function countDischargedPatients(totalPatients: number, admittedCount: number): number {
+    return totalPatients - admittedCount;
+}
+ 
+function countPatientsByDepartment(patients: Patient[]): Record<string, number> {
+    const result: Record<string, number> = {};
+    for (const p of patients) {
+        result[p.department] = (result[p.department] ?? 0) + 1;
+    }
+    return result;
+}
+ 
+function findHighestBill(patients: Patient[]): number {
+    return patients.length > 0 ? Math.max(...patients.map(p => p.bill)) : 0;
+}
+ 
+function findLowestBill(patients: Patient[]): number {
+    return patients.length > 0 ? Math.min(...patients.map(p => p.bill)) : 0;
+}
+ 
+function calculateTotalRevenue(patients: Patient[]): number {
+    return patients.reduce((sum, p) => sum + p.bill, 0);
+}
+ 
+function calculateAverageBill(totalRevenue: number, totalPatients: number): number {
+    return totalPatients > 0 ? totalRevenue / totalPatients : 0;
+}
+ 
+function getAdmittedPatientNames(admittedPatients: Patient[]): string[] {
+    return admittedPatients.map(p => p.name);
+}
+ 
+function generateReportData(patients: Patient[]): HospitalReport {
+    const totalPatients = countTotalPatients(patients);
+    const admittedPatients = getAdmittedPatients(patients);
+    const totalRevenue = calculateTotalRevenue(patients);
+ 
+    return {
+        totalPatients,
+        admittedCount: admittedPatients.length,
+        dischargedCount: countDischargedPatients(totalPatients, admittedPatients.length),
+        byDepartment: countPatientsByDepartment(patients),
+        highestBill: findHighestBill(patients),
+        lowestBill: findLowestBill(patients),
+        averageBill: calculateAverageBill(totalRevenue, totalPatients),
+        totalRevenue,
+        admittedNames: getAdmittedPatientNames(admittedPatients)
+    };
+}
+ 
+function printHospitalReport(report: HospitalReport): void {
+    console.log(`Total patients: ${report.totalPatients}`);
+    console.log(`Total admitted patients: ${report.admittedCount}`);
+    console.log(`Total discharged patients: ${report.dischargedCount}`);
+    console.log("Patients per department:");
+    for (const [dept, count] of Object.entries(report.byDepartment)) {
+        console.log(`  - ${dept}: ${count}`);
+    }
+    console.log(`Highest hospital bill: ${report.highestBill}`);
+    console.log(`Lowest hospital bill: ${report.lowestBill}`);
+    console.log(`Average hospital bill: ${report.averageBill}`);
+    console.log(`Total hospital revenue: ${report.totalRevenue}`);
+    console.log(`Names of admitted patients: ${report.admittedNames.join(", ")}`);
+}
+ 
+const report = generateReportData(patients);
+printHospitalReport(report);
